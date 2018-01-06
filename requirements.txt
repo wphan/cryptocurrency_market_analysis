@@ -1,0 +1,6 @@
+ccxt
+numpy
+plotly
+scipy
+sklearn
+tabulate
