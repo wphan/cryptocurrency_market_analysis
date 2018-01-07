@@ -50,17 +50,16 @@ def initialize(context):
 def handle_data(context, data):
     # only rebalance at beginning of algo execution and every multiple of
     # rebalance period
-    if context.i == 0:
-        try:
-            for asset in context.assets:
-                if data.can_trade(asset):
-                    order_target_percent(asset, 1.0 / float(context.nassets))
-        except Exception as e:
-            print("===============================")
-            print("Error optimizing {}".format(global_vars.SECTOR_NAME))
-            print("Assets: {}".format(context.assets))
-            print("{}".format(e))
-            print("===============================")
+    try:
+        for asset in context.assets:
+            if data.can_trade(asset):
+                order_target_percent(asset, 1.0 / float(context.nassets))
+    except Exception as e:
+        print("===============================")
+        print("Error optimizing {}".format(global_vars.SECTOR_NAME))
+        print("Assets: {}".format(context.assets))
+        print("{}".format(e))
+        print("===============================")
 
     context.i += 1
 
